@@ -1,0 +1,180 @@
+=================
+STARTAR O PROJETO
+=================
+
+Passos
+======
+
+1. Split terminal
+2. Terminal #1 -> npm run frontend
+    http://localhost:3000/
+3. Terminal #2 -> npm run backend
+    http://localhost:7000/
+
+JSON Server
+===========
+
+- funciona como se fosse um sistema de backend
+- dentro dele vai estar a api de dados
+
+===========
+APPLICATION
+===========
+
+Resumo
+======
+
+FRONTEND => invoca via request => BACKEND 
+FRONTEND <= momento de response <= BACKEND
+
+HTTP(S)
+=======
+
+- para isso, é usado um protocolo de rede que permite a comunicação entre sistemas
+- protocolo http
+- faz transferência de formato texto
+- é a base de comunicação
+- http + s -> camada a mais de comunicação sobre o protocolo http
+
+CRUD
+====
+
+- C : create -> criar, front fala com back para criar um recurso 
+- R : retrieve -> recuperar, front comunica com o back para extrair/pegar dado
+- U : update -> atualizar, promover atualização no dado
+- D : delete -> ação de apagar um dado no sistema de backend
+
+Estratégias/Operações de Comunicação
+====================================
+
+- create [gravar] => HTTP POST
+- retrieve [recuperar] => HTTP GET
+- update [atualizar] => HTTP PATCH/PUT *
+- delete [deletar] => HTTP DELETE
+
+*   PUT -> atualização completa
+    PATCH -> atualização parcial
+
+URL
+===
+
+ENDPOINT: http://localhost:7000/ [raiz]
+
+SINTAXE:
+- http -> protocolo 
+- localhost -> basepath (caminho base, destino)
+- port -> porta onde vai gravar as informações
+- /resource -> recurso que quero acessar e vou adm no meu backend *
+
+*   exemplos de recursos: /posts, /comments, /profile
+    como se fosse tabelas do banco de dados 
+    estou representando isso no formato de recursos
+    dá pra entender que é um backend para fazer um blog!
+    definir um novo recurso para podermos adm
+    que represente que estamos trabalhando com contatos / agenda
+
+*   não passar o id
+    put e delete -> id no endereço
+
+========
+WORKFLOW
+========
+
+Requisitos
+==========
+
+- Usuário preenche nome e email
+- Usuário clica no botão adicionar (gatilho, trigger)
+- Sistema valida os dados preenchidos (validateFields)
+- Caso falha, sistema aponta preenchimento incorreto
+- Caso sucesso, sistema vai inserir os dados no backend (addContact)
+- Sistema vai recuperar os dados gravados e exibir na tabelas (getContact)
+- Sistema vai limpar os campos do formulário (clearFields)
+- Depois que um contato foi inserido, ele pode ser excluído (mediante confirmação) (removeContact)
+- Depois que um contato foi inserido, os dados podem ser editados (editContact)
+
+Comentários
+===========
+
+- Como começar?
+
+    1. Design pattern -> module
+    (function () {})
+    função anônima "embrulhada"
+    
+    2. Colocando ela pra executar adicionando um (); no fim
+    (function () {
+    console.log("Starting...");
+    })();
+   
+    3. Elementos da tela 
+    UI -> objeto
+    
+    const ui = {
+        fieldName: null,
+        fieldEmail: null,
+        buttonAdd: null,
+        contactList: null
+    };
+
+    4. Ações, funcionalidades
+    functions
+
+    const validateFields = function() {};
+    const addContact = function() {};
+    const getContact = function() {};
+    const clearFields = function() {};
+    const removeContact = function() {};
+    const editContact = function() {};
+
+    5. Binding Events (ligação dos eventos)
+    
+    ui.buttonAdd.onclick = validateFields;
+    com o evento de "clicar no botão", a função validateFields vai ser acionada
+    é um dos entrypoints
+    o usuário precisa clicar no "adicionar" para que seja disparado uma sequência de eventos
+
+    6. Debugger
+    
+    adicionar onde vc quer saber se está sendo chamado
+    processo de depuração
+
+    7. Validação do Form
+    
+    html já tem um comportamento padrão (form)
+    o script e o browser entram em conflito
+    capturar o evento
+    passar ele pra função
+    e lá prevenir sua ação padrão de recarregar a tela
+
+    value -> tem no html form, é o valor inserido no input
+    é o valor que vc vai escrever
+    
+
+
+
+
+Teoria
+======
+
+# API Document
+
+## getElementBy
+- objeto document
+- tudo o que tem dentro do html pode ser acessado e customizado
+- document.getElementBy... -> uma das funções mais comuns
+- posso pegar qualquer elemento que tiver um identificador
+- procuram no html qualquer elemento que tiver a referência
+- exemplos: document.getElementById("name"), document.getElementsByClassName(""), document.getElementsByTagName("label")
+
+# querySelector 
+- todos estes comandos podem ser substituídos por document.querySelector("")
+- faz isso com um único método
+- diferença: usa sintaxe do css
+- exemplo: document.querySelector("#name") para id e etc
+- ele é um substituto
+- porém ele sempre pega o primeiro elemento que encontrar com este nome que passou
+- ele só extrai o primeiro dado
+- se tiver mais de uma informação, usar o querySelectorAll
+- faz sentido usar quando está usando por tag ou classe
+
