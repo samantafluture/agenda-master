@@ -151,9 +151,6 @@ Comentários
     é o valor que vc vai escrever
     
 
-
-
-
 Teoria
 ======
 
@@ -178,3 +175,94 @@ Teoria
 - se tiver mais de uma informação, usar o querySelectorAll
 - faz sentido usar quando está usando por tag ou classe
 
+# XML HTTP request
+- construtor
+- consegue através dele criar uma comunicação usando protocolo HTTP
+- verboso e complexo
+- 2 modelos
+
+-> SÍNCRONO
+    . comportamento do app dentro do navegadorvai ser um (diferente do abaixo)
+    . exemplo da fila indiana
+        . de forma ruim
+        . muito sequencial
+        . a última pessoa a chegar come só no dia seguinte rs
+    . requisição tem que ser compreendida, completa e ter resposta para aí sim poder fazer nova requisição
+    . vc trava a experiência do usuário / navegador, até ficar pronto
+    . fazer um loading "aguarde" para entender que tem que esperar aquilo acabar
+
+-> ASSÍNCRONO
+    . exemplo de restaurante
+    . conforme os pratos ficam prontos, já vou pegando e entregando
+    . às vezes uma mesa que chegou depois recebe um prato antes por ser um prato rápido
+    . dispacha o dado para o backend e quando gravar avisa
+    . a tela / sistema não fica travado esperando por uma resposta
+    . modelo mais desejado na web
+
+-> JS NO NAVEGADOR 
+    . single thread
+    . não tem como paralelizar processos de forma nativa
+    . fica tudo na sequência
+    . mas se vc tem que esperar terminar para começar, a experiência para o usuário é péssima
+
+# FETCH API -> fetch()
+- especificação mais nova
+- modelo TOTALMENTE ASSÍNCRONO
+- simplificação do código
+- podemos considerar novo padrão
+- headers
+    . cabeçalhos de comunicação
+    . negociação com sistema de backend
+    . passar um header indicando isso
+- trabalha com processos assíncronos
+- ela trabalha com este modelo assíncrono de forma natural
+- pq sua construção foi baseada em outra api js
+
+# PROMISE API
+- está por debaixo dos panos da FETCH API
+- faz a comunicação assíncrona de rede
+- vc chama ela, e o primeiro estado / state que ela tem de resposta é o "pending"
+    . como é assíncrona, fica pendente naquele momento
+- depois, quando respondeu, muda o estado da comunicação
+- pode ir pra dois caminhos: "fulfilled" (sucesso) ou "rejected" (falha, error)
+- falha pode ser de desconexão com o backend
+- sucesso é quando a comunicação deu tudo certo
+- temos saber que podemos ter falhas -> fazer tratamendo de erro!
+- todo rejected vai ser tratado por uma função interna -> catch()
+- todo fulfilled vai ser tratado por outra função interna -> then()
+- finally() -> chama o cara final pra poder executar, independente se deu erro ou sucesso
+
+## Objeto response
+- como resultado da requisição de sucesso do método GET
+- neste objeto está a resposta da comunicação
+- tem que fazer o tratamento dos dados, já que pode chegar todo tipo de dado 
+- métodos para fazer este tratamento -> .json()
+- o response.json() gera uma nova promise -> que fica pendente e assim vai!
+
+# JSON API
+- stringify()
+    . de objeto para texto
+    . pega objeto js nativo
+    . transforma ele em texto
+- parse()
+    . de texto para objeto
+    . converte de texto para objeto de volta
+    . devolve um objeto puro na íntriga
+
+# CONSOLE -> NETWORK
+- no dev tools Google Chrome
+- abrir a parte de Network para ver as requisições HTTP
+
+# FOREACH -> MAP, FILTER, RECUCE
+- eles fazem a mesma coisa, que é iterar
+- map -> aplica transformação e retorna uma nova lista
+- filter -> aguarda um cirtério de filtro
+- no lugar do forEach: posso colocar map, filter e reduce
+- ele percorre e passa por todos os itens 
+- ele só serve para iterar
+- mas os outros 3 fazem coisas além 
+- porém map+ vai além, pois o forEach só serve para iterar
+- os outros map+ tem retorno; retornam o dado transformado
+- map() -> permite q vc faça uma transformação (vantagem!)
+- ele retorna um novo array
+- filter() -> também retorna; mas ele espera um critério para filtragem

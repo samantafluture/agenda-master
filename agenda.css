@@ -27,3 +27,7 @@ quando o campo tiver a classe error */
 .pure-form input.error+span {
   display: inline-block;  
 }
+
+.message-error {
+  color: #e60000;
+}

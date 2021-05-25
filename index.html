@@ -10,7 +10,7 @@
   
   <form class="pure-form pure-form-aligned">
     <fieldset>
-      <legend>Agenda</legend>
+      <legend class="message-error">Agenda</legend>
 
       <div class="pure-control-group">
         <label for="name">Nome</label>
@@ -35,7 +35,7 @@
       </div>
     </fieldset>
   </form>
-  
+
   <hr>
   
   <table class="pure-table">
@@ -43,26 +43,33 @@
           <tr>
               <th>#</th>
               <th>Nome</th>
+              <th>Telefone</th>
               <th>Email</th>
+              <th>Ações</th>
           </tr>
       </thead>
 
       <tbody>
-          <tr>
-            <td colspan="3">Não existem dados registrados!</td>
-          </tr>
-          
-          <!-- <tr>
-              <td>1</td>
-              <td>John Doe</td>
-              <td>john@doe.com</td>
-          </tr>
+
+        <tr>
+          <td colspan="5">Carregando...</td>
+        </tr>
 
           <tr>
-              <td>2</td>
-              <td>Mary Doe</td>
-              <td>mary@doe.com</td>
-          </tr> -->
+            <td colspan="5">Não existem dados registrados!</td>
+          </tr>
+          
+          <tr>
+              <td>1</td>
+              <td>John Doe</td>
+              <td>11 98465-3744</td>
+              <td>john@doe.com</td>
+              <td>
+                <a href="#">Excluir</a> |
+                <a href="#">Editar</a>
+              </td>
+          </tr>
+
       </tbody>
   </table>
 
